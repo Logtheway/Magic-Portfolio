@@ -1,0 +1,81 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+.font-headline {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-border;
+}
+
+.text-mtg-red { color: #CC5252; }
+.bg-mtg-red { background-color: #CC5252; }
+.border-mtg-red { border-color: #CC5252; }
+
+.text-mtg-blue { color: #6FA6CB; }
+.bg-mtg-blue { background-color: #6FA6CB; }
+.border-mtg-blue { border-color: #6FA6CB; }
+
+.text-mtg-green { color: #5D8950; }
+.bg-mtg-green { background-color: #5D8950; }
+.border-mtg-green { border-color: #5D8950; }
+
+.text-mtg-white { color: #FFFFD9; }
+.bg-mtg-white { background-color: #FFFFD9; }
+.border-mtg-white { border-color: #FFFFD9; }
+
+.text-mtg-black { color: #A691F5; }
+.bg-mtg-black { background-color: #A691F5; }
+.border-mtg-black { border-color: #A691F5; }
+
+/* Colorless (Artifact/Eldrazi) theme */
+.text-mtg-colorless { color: #94a3b8; }
+.bg-mtg-colorless { background-color: #94a3b8; }
+.border-mtg-colorless { border-color: #94a3b8; }
