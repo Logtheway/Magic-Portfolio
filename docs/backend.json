@@ -1,0 +1,90 @@
+
+{
+  "entities": {
+    "Group": {
+      "title": "Group",
+      "description": "A playgroup for Magic: The Gathering.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "players": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "isUser": { "type": "boolean" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "ownerId", "players"]
+    },
+    "Game": {
+      "title": "Game",
+      "description": "A recorded game of Commander.",
+      "type": "object",
+      "properties": {
+        "groupId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "winnerPlayerId": { "type": "string" },
+        "participants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "playerId": { "type": "string" },
+              "commanderName": { "type": "string" },
+              "colorIdentity": { "type": "string" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["groupId", "date", "winnerPlayerId", "participants"]
+    },
+    "Deck": {
+      "title": "Deck",
+      "description": "A Magic: The Gathering deck list.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "commander": { "type": "string" },
+        "ownerId": { "type": "string" },
+        "cards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "count": { "type": "number" },
+              "category": { "type": "string" }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "ownerId"]
+    }
+  },
+  "auth": {
+    "providers": ["password"]
+  },
+  "firestore": {
+    "/groups/{groupId}": {
+      "schema": { "$ref": "#/backend/entities/Group" },
+      "description": "Groups managed by users."
+    },
+    "/games/{gameId}": {
+      "schema": { "$ref": "#/backend/entities/Game" },
+      "description": "Logged games."
+    },
+    "/decks/{deckId}": {
+      "schema": { "$ref": "#/backend/entities/Deck" },
+      "description": "User deck lists."
+    }
+  }
+}
